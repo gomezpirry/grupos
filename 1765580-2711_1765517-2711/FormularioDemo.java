@@ -20,21 +20,75 @@ public class FormularioDemo extends JFrame {
         super(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        GridLayout layoutMain = new GridLayout(3,0,10, 10);
-        GridLayout layout1 = new GridLayout(3, 4, 10,10);
+        JMenuBar menuBar = new JMenuBar () ;
+        JMenu fileMenu = new JMenu (" File ") ;
+        JMenu optionsMenu = new JMenu (" options ") ;
+        JMenuItem save = new JMenuItem ("save") ;
+        JMenuItem send = new JMenuItem ("send");
+        JMenuItem New = new JMenuItem ("new");
+        JMenuItem clear = new JMenuItem (" clear ") ;
+        JMenuItem fill = new JMenuItem (" fill ") ;
+        JMenu help = new JMenu ("help");
+        JMenuItem about = new JMenuItem("about");
+        JMenuItem credits = new JMenuItem("credits");
+        
+        JMenuItem quit = new JMenuItem ("quit");
+        
+      
+        
+        fileMenu .add ( save );
+        fileMenu .add (send);
+        fileMenu .add (New);
+        fileMenu .addSeparator ();
+        fileMenu .add (quit);
+        optionsMenu .add( clear ) ;
+        optionsMenu .add( fill ) ;
+        optionsMenu . addSeparator () ;
+        help.add(about);
+        help.add(credits);
+        menuBar .add ( fileMenu ) ;
+        menuBar .add ( optionsMenu ) ;
+        menuBar .add ( help ) ;
+// add menu bar to frame
+        setJMenuBar ( menuBar ) ;
+        
+        
+        GridLayout layoutMain = new GridLayout(5,0,10, 10);
+        GridLayout layout1 = new GridLayout(2, 4, 10,10);
         GridLayout layout2 = new GridLayout(4, 3, 10,10);
         GridLayout layout3 = new GridLayout(1, 0, 10, 10);
+        GridLayout layout4 = new GridLayout(1, 2, 10, 10);
+        GridLayout layout5 = new GridLayout(2, 4, 10, 10);
+        
         
         JPanel panelMain = new JPanel(layoutMain);
         JPanel panel1 = new JPanel(layout1);
         JPanel panel2 = new JPanel(layout2);
         JPanel panel3 = new JPanel(layout3);
+        JPanel panel4 = new JPanel(layout4);
+        JPanel panel5 = new JPanel(layout5);
         JPanel panelCheck = new JPanel();
         panelCheck.setBorder(BorderFactory.createTitledBorder("Intereses"));
         panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         panel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         panel3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panel4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panel5.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         JPanel panelDocumento = new JPanel();
+        
+        JButton cancelar = new JButton ("cancelar");
+        JButton enviar = new JButton ("enviar");
+        panel4.add(cancelar);
+        panel4.add(enviar);
+        
+        
+        String [] departamentos = {"valle del cauca","nariño","choco","cauca"};
+        JComboBox comboDpto = new JComboBox (departamentos);
+        
+        JLabel labelDepartamento = new JLabel ("departamento :");
+        
+       
+        
         JLabel labelNombre = new JLabel("Nombre :");
         JLabel labelApellido = new JLabel("Apellido :");
         JLabel labelTipoDocumento = new JLabel("Tipo Documento: ");
@@ -62,6 +116,8 @@ public class FormularioDemo extends JFrame {
         panelDocumento.add(cedula);
         panelDocumento.add(tarjetaIdentidad);
         panelDocumento.add(registroCivil);
+        
+        
         
         JTextField textoNombre = new JTextField();
         JTextField textoApellido = new JTextField();
@@ -91,6 +147,7 @@ public class FormularioDemo extends JFrame {
         panelCheck.add(checkOtros);
         
         
+        
         panel1.add(labelNombre);
         panel1.add(textoNombre);
         panel1.add(labelApellido);
@@ -99,8 +156,16 @@ public class FormularioDemo extends JFrame {
         panel1.add(panelDocumento);
         panel1.add(labelNumeroDocumento);
         panel1.add(textoNumeroDocumento);
-        panel1.add(labelPerfil);
-        panel1.add(scrollPerfil);
+        
+        panel5.add(labelDepartamento);
+        panel5.add(comboDpto);
+        panel5.add(labelPerfil);
+        panel5.add(scrollPerfil);
+        
+        
+        
+        
+        
         
         panel2.add(labelDireccion);
         panel2.add(labelTelefono);
@@ -131,13 +196,16 @@ public class FormularioDemo extends JFrame {
         panel3.add(panelCheck);
         
         panelMain.add(panel1);
+        panelMain.add(panel5);
         panelMain.add(panel2);
         panelMain.add(panel3);
+        panelMain.add(panel4);
+      
         
         
         getContentPane().add(panelMain);
         setVisible(true);
-        setSize(600, 500);
+        setSize(700, 800);
         
                 
     }
