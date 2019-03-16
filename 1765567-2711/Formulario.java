@@ -21,17 +21,20 @@ public class Formulario extends JFrame {
         super(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        GridLayout layoutMain = new GridLayout(4, 0);
-        GridLayout layout1    = new GridLayout(3, 4);
+        GridLayout layoutMain = new GridLayout(5, 0);
+        GridLayout layout1    = new GridLayout(2, 4);
         GridLayout layout2    = new GridLayout(4, 3);
         GridLayout layout3    = new GridLayout(1, 0);
         GridLayout layout4    = new GridLayout(1, 2);
+        GridLayout layout5    = new GridLayout(1, 2);
         
         JPanel panelMain = new JPanel(layoutMain);
         JPanel panelA = new JPanel(layout1);
         JPanel panelB = new JPanel(layout2);
         JPanel panelC = new JPanel(layout3);
         JPanel panelD = new JPanel(layout4);
+        JPanel panelE = new JPanel(layout5);
+        
         
         JPanel panelCheck = new JPanel();
       
@@ -41,6 +44,7 @@ public class Formulario extends JFrame {
         JLabel labelTipoDocumento = new JLabel("Tipo Documento : ");
         JLabel labelNumeroDocumento = new JLabel("Numero :");
         JLabel labelPerfil = new JLabel("Perfil :");
+        JLabel Departamentos = new JLabel ("Departamento");
         
         JLabel labelDireccion = new JLabel("Direccion");
         JLabel labelTelefono = new JLabel("Telefono");
@@ -49,6 +53,8 @@ public class Formulario extends JFrame {
         JLabel labelDepartamento = new JLabel ("Departamento");
         JLabel labelPais = new JLabel ("Pais");
         
+              
+                
         ButtonGroup tipoDocumento = new ButtonGroup();
         JRadioButton cedula = new JRadioButton("C.C");
         JRadioButton tarjetaIdentidad = new JRadioButton("T.I");
@@ -78,8 +84,8 @@ public class Formulario extends JFrame {
         JCheckBox checkViajes      = new JCheckBox("Viajes");
         JCheckBox checkEducacion   = new JCheckBox("Educacion");
         JCheckBox checkCompras     = new JCheckBox("Compras");
-        JCheckBox checkVehiculos   = new JCheckBox("Compras");
-        JCheckBox checkNegocios    = new JCheckBox("Compras");
+        JCheckBox checkVehiculos   = new JCheckBox("vehiculos");
+        JCheckBox checkNegocios    = new JCheckBox("Negocios");
         JCheckBox checkOtros       = new JCheckBox("Otros");   
         
         panelCheck.setLayout(new GridLayout(2, 4, 10 ,10));
@@ -95,6 +101,9 @@ public class Formulario extends JFrame {
         JButton buttonCancelar = new JButton("Cancelar");
         JButton buttonEnviar   = new JButton("Enviar");   
         
+        String [] lang = {"valle del cauca", "choco", "cauca", "nariño"};
+        JComboBox Dpto = new JComboBox (lang) ;
+        
         panelA.add(labelNombre);
         panelA.add(textoNombre);
         panelA.add(labelApellido);
@@ -103,8 +112,10 @@ public class Formulario extends JFrame {
         panelA.add(panelDocumento);
         panelA.add(labelNumeroDocumento);
         panelA.add(textoNumeroDocumento);
-        panelA.add(labelPerfil);
-        panelA.add(scrollPerfil);
+        panelE.add(labelPerfil);
+        panelE.add(scrollPerfil);
+        panelE.add(Departamentos);
+        panelE.add(Dpto);
         
         panelB.add(labelDireccion);
         panelB.add(labelTelefono);
@@ -139,6 +150,7 @@ public class Formulario extends JFrame {
         panelD.add(buttonEnviar);
         
         panelMain.add(panelA);
+        panelMain.add(panelE);
         panelMain.add(panelB);
         panelMain.add(panelC);
         panelMain.add(panelD);
@@ -147,6 +159,39 @@ public class Formulario extends JFrame {
         getContentPane().add(panelMain);
         setVisible(true);
         pack();
+        
+        JMenuBar menuBar = new JMenuBar () ;
+        JMenu file = new JMenu (" File ") ;
+        JMenu options = new JMenu (" options ") ;
+        JMenu help = new JMenu ("help");
+        JMenuItem NEW = new JMenuItem ("New");
+        JMenuItem save = new JMenuItem ("save");
+        JMenuItem send = new JMenuItem ("send");
+        JMenuItem clear = new JMenuItem ("clear");
+        JMenuItem fill = new JMenuItem ("fill");
+        JMenuItem about = new JMenuItem ("about");
+        JMenuItem credits = new JMenuItem ("credits");
+        JMenuItem quit = new JMenuItem ("quit");
+                  
+        
+        file.add(NEW) ;
+        file.add(save);
+        file.add(send);
+        file.addSeparator();
+        file.add(quit);
+        
+        options.add(clear);
+        options.add(fill);
+        
+        help.add(about);
+        help.add(credits);
+        
+        menuBar.add(file);
+        menuBar.add(options);
+        menuBar.add(help);
+        
+        setJMenuBar ( menuBar ) ;
+
         
                 
     }}
