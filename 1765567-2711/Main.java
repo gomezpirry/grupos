@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package formulario;
 
 /**
  *
- * @author Usuario
+ * @author juan pablo
  */
 public class Main {
     public static void main(String args[]){
-        FormularioDemo ventana = new FormularioDemo("Formulario");
+        Formulario ventana = new Formulario("Formulario");
     }
     
 }
