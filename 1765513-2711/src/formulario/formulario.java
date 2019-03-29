@@ -9,12 +9,18 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -25,6 +31,8 @@ public class formulario extends JFrame  {
 public formulario (String title) {
 	super(title);
 	
+	
+	
 	 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      
      GridLayout layout = new GridLayout(4, 0, 10, 10);
@@ -32,12 +40,56 @@ public formulario (String title) {
      GridLayout layout2    = new GridLayout(4, 3, 10, 10);
      GridLayout layout3    = new GridLayout(1, 0, 10, 10);
      GridLayout layout4    = new GridLayout(2, 2,0,0);
-     
+    
      JPanel panelMain = new JPanel(layout);
      JPanel panel1 = new JPanel(layout1);
      JPanel panel2 = new JPanel(layout2);
      JPanel panel3 = new JPanel(layout3);
      JPanel panel4 = new JPanel(layout4);
+     
+     JMenuBar menuBar = new JMenuBar ();
+     JMenu fileMenu = new JMenu ("file");
+     JMenu fileOpciones = new JMenu ("opciones");
+     JMenu fileHelp = new JMenu ("Help");
+     JMenu editMenu = new JMenu ("edit");
+     JMenuItem newMenu = new JMenuItem ("New");
+     JMenuItem saveMenu = new JMenuItem ("save");
+     JMenuItem sendMenu = new JMenuItem ("send");
+     JMenuItem quitMenu = new JMenuItem ("Quit");
+     JMenuItem ClearMenu = new JMenuItem ("Clear");
+     JMenuItem fillMenu = new JMenuItem ("Fill");
+     JMenuItem AboutMenu = new JMenuItem ("About");
+     JMenuItem CreditsMenu = new JMenuItem ("Credit");
+     JMenuItem project = new JMenuItem ("Project");
+     JMenuItem pastes = new JMenuItem ("paste");
+     
+     fileMenu.add(newMenu);
+     fileMenu.add(saveMenu);
+     fileMenu.add(sendMenu);
+     fileMenu.addSeparator();
+     fileMenu.add(quitMenu);
+    
+     fileOpciones.add(ClearMenu);
+     fileOpciones.add(fillMenu);
+     
+     fileHelp.add(AboutMenu);
+     fileHelp.add(CreditsMenu);
+     
+     menuBar.add(fileMenu);
+     menuBar.add(fileOpciones);
+     menuBar.add(fileHelp);
+     
+     
+     ButtonGroup group = new ButtonGroup();
+     JRadioButtonMenuItem normal = new
+    		 JRadioButtonMenuItem ("Normal");
+     JRadioButtonMenuItem full = new
+    		 JRadioButtonMenuItem ("Full");
+     group.add(normal);
+     group.add(full);
+     
+     JCheckBoxMenuItem nav = new JCheckBoxMenuItem("Navigator");
+     
      
      JPanel panelCheck = new JPanel();
      panelCheck.setBorder(BorderFactory.createTitledBorder("Intereses"));
@@ -49,6 +101,7 @@ public formulario (String title) {
      JLabel labelApellido = new JLabel("Apellido :");
      JLabel labelTipoDocumento = new JLabel("Tipo Documento : ");
      JLabel labelNumeroDocumento = new JLabel("Numero :");
+     JLabel labelDepartamento = new JLabel ("Departamento");
      JLabel labelPerfil = new JLabel("Perfil :");
      
      JLabel labelDireccion = new JLabel("Direccion");
@@ -72,6 +125,11 @@ public formulario (String title) {
      JTextField textoNombre = new JTextField();
      JTextField textoApellido = new JTextField();
      JTextField textoNumeroDocumento = new JTextField();
+     
+     String[] departamentos = {"valle del cauca", "tolima", "Nariño", "cauca","choco"};
+     JComboBox boxDepartamento = new JComboBox (departamentos);
+     boxDepartamento.setSelectedIndex(3);
+     boxDepartamento.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
      
      JTextField textoDireccion = new JTextField();
      JTextField textoCiudad = new JTextField();
@@ -112,6 +170,8 @@ public formulario (String title) {
      panel1.add(panelDocumento);
      panel1.add(labelNumeroDocumento);
      panel1.add(textoNumeroDocumento);
+     panel1.add(labelDepartamento);
+     panel1.add(boxDepartamento);
      panel1.add(labelPerfil);
      panel1.add(scrollPerfil);
      
@@ -146,6 +206,8 @@ public formulario (String title) {
      panel4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
      panel4.add(buttonCancelar);
      panel4.add(buttonEnviar);
+     
+     setJMenuBar(menuBar);
      
      panelMain.add(panel1);
      panelMain.add(panel2);
