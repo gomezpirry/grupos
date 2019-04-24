@@ -1,4 +1,4 @@
-package formulario;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
