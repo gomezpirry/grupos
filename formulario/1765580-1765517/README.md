@@ -1,5 +1,5 @@
 # Revision formulario
 
-* Faltan los botones, el menubar y organizar los checkbox
+* ESta bien
 
-## Nota: 2.5
+## Nota: 4.0
